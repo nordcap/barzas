@@ -1,0 +1,28 @@
+<!doctype html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title%} Учет перевозок на Барзасском карьере {% endblock %}</title>
+    <link href="{% static 'css/materialize.min.css'%}" rel="stylesheet">
+</head>
+<body>
+  <nav class="blue darken-3">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="{% url 'admin:index'%}">Админка</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+<div class="container">
+    {% block content%}
+    {% endblock %}
+</div>
+<script src="{% static 'js/materialize.min.js' %}"></script>
+<script src="{% static 'admin/js/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
