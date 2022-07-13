@@ -15,6 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -111,14 +112,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
+MEDIA_ROOT = Path.joinpath(BASE_DIR, 'upload')
 STATIC_URL = 'static/'
 STATIC_ROOT = Path.joinpath(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     ('css', Path.joinpath(STATIC_ROOT, 'css')),
     ('js', Path.joinpath(STATIC_ROOT, 'js'))
 ]
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

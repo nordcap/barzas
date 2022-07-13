@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title%} Учет перевозок на Барзасском карьере {% endblock %}</title>
     <link href="{% static 'css/materialize.min.css'%}" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <nav class="blue darken-3">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
+      <a href="{% url 'transport:index' %}" class="brand-logo">Logo</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="{% url 'admin:index'%}">Админка</a></li>
       </ul>
