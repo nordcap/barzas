@@ -117,7 +117,8 @@ STATIC_URL = 'static/'
 STATIC_ROOT = Path.joinpath(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     ('css', Path.joinpath(STATIC_ROOT, 'css')),
-    ('js', Path.joinpath(STATIC_ROOT, 'js'))
+    ('js', Path.joinpath(STATIC_ROOT, 'js')),
+    ('img', Path.joinpath(STATIC_ROOT, 'img')),
 ]
 
 # Default primary key field type

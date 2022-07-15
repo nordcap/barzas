@@ -1,17 +1,23 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content%}
 <div class="row">
-    <h4 class="col s4">Форма загрузки</h4>
-</div>
-<div class="row">
     <div class="col s4">
-        <form action="{% url 'transport:index' %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form_load}}
-            <button type="submit" class="btn waves-effect waves-light" name="load">Загрузить
-                <i class="material-icons right">send</i>
-            </button>
-        </form>
+        <div class="card small">
+            <div class="card-image tonar">
+                <img src="{% static 'img/tonar.jpg'%}" alt="tonar">
+            </div>
+            <div class="card-content">
+                <form action="{% url 'transport:index' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form_load}}
+                    <button type="submit" class="btn waves-effect waves-light" name="load">Загрузить
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>
 <div class="row">
@@ -21,7 +27,7 @@
 </div>
 <div class="row">
     <div class="col s12">
-          {{ file }}
+        {{ file }}
     </div>
 </div>
 
