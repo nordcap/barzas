@@ -16,8 +16,10 @@ def index(request):
             # url = reverse('transport:traffic')
             context = {
                 'file': request.FILES['file'],
+                'form_load': LoadDataForm(),
                 'dict_trip': dict_trip
             }
+            print(dict_trip)
             return render(request, 'transport/index.html', context)
     else:
         context = {

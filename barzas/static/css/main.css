@@ -3,3 +3,14 @@
     justify-content: center;
     align-items: center;
 }
+
+.card.small {
+    border: 1px solid #666666;
+}
+
+
+.tabs .tab a {
+    color: rgba(50, 0, 255, 0.7);
+    font-size: 16px;
+}
+

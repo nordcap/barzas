@@ -20,15 +20,48 @@
 
     </div>
 </div>
+
+
 <div class="row">
     <div class="col s12">
-        Поле с вкладками
+        <ul class="tabs tabs-fixed-width">
+            <li class="tab col s1"><a href="#trip" class="active" >Ходки</a></li>
+            <li class="tab col s1"><a href="#reestr">Сводный реестр</a></li>
+        </ul>
     </div>
-</div>
-<div class="row">
-    <div class="col s12">
-        {{ file }}
+    <div id="trip" class="col s12">
+        <table class="striped">
+            <thead>
+            <tr>
+                <th>Машина</th>
+                <th>Смена</th>
+                <th>Погрузка</th>
+                <th>Разгрузка</th>
+                <th>Ходки</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for tonar, dict_1 in dict_trip.items %}
+            {% for smena, dict_2 in dict_1.items %}
+            {% for store, trip in dict_2.items %}
+            <tr>
+                <td>{{ tonar }}</td>
+                <td>{{ smena }}</td>
+                <td>{{ store.0 }}</td>
+                <td>{{ store.1 }}</td>
+                <td>{{ trip }}</td>
+            </tr>
+            {% endfor %}
+            {% endfor %}
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
+    <div id="reestr" class="col s12">
+        <p>Здесь будет таблица с кол-вом рейсов в зависимости от расстояния</p>
+    </div>
+
 </div>
 
 
