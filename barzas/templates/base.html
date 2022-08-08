@@ -5,26 +5,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title%} Учет перевозок на Барзасском карьере {% endblock %}</title>
-    <link href="{% static 'css/materialize.min.css'%}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
     <link href="{% static 'css/main.css'%}" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-  <nav class="blue darken-3">
-    <div class="nav-wrapper">
-      <a href="{% url 'transport:index' %}" class="brand-logo">Барзасский карьер</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="{% url 'admin:index'%}">Админка</a></li>
-      </ul>
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a href="{% url 'transport:index' %}" class="navbar-brand">Барзасский карьер</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="btn btn-outline-light" href="{% url 'admin:index'%}">Админка</a>
+            </li>
+        </ul>
     </div>
-  </nav>
+</nav>
 
 
 <div class="container">
     {% block content%}
     {% endblock %}
 </div>
-<script src="{% static 'js/materialize.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'admin/js/vendor/jquery/jquery.min.js' %}"></script>
-<script src="{% static 'js/main.js' %}"></script>
 </body>

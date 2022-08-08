@@ -1,16 +1,14 @@
-.tonar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.card.small {
-    border: 1px solid #666666;
+.card {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin-top: 2rem;
+    margin-bottom:2rem;
 }
 
 
-.tabs .tab a {
-    color: rgba(50, 0, 255, 0.7);
-    font-size: 16px;
+.arrow{
+    margin-left: 10px;
 }
 
+#myTabContent{
+    padding-top: 2rem;
+}
