@@ -29,7 +29,7 @@
             <li class="nav-item" role="presentation">
                 <a href="#trip" class="nav-link active" id="trip-tab" data-bs-toggle="tab"
                    data-bs-target="#trip-tab-pane" role="tab" aria-controls="trip-tab-pane"
-                   aria-selected="true">Ходки</a>
+                   aria-selected="true">Ходки транспорта</a>
             </li>
             <li class="nav-item" role="presentation">
                 <a href="#reestr" class="nav-link" id="reestr-tab" data-bs-toggle="tab"
@@ -43,12 +43,12 @@
                  tabindex="0">
                 <table class="table  table-hover table-primary table-striped table-bordered">
                     <thead>
-                    <tr class="table-dark">
-                        <th scope="col">Машина</th>
-                        <th scope="col">Смена</th>
-                        <th scope="col">Погрузка</th>
-                        <th scope="col">Разгрузка</th>
-                        <th scope="col">Ходки</th>
+                    <tr class="table-dark text-center">
+                        <td scope="col">Машина</td>
+                        <td scope="col">Смена</td>
+                        <td scope="col">Погрузка</td>
+                        <td scope="col">Разгрузка</td>
+                        <td scope="col">Ходки</td>
                     </tr>
                     </thead>
                     <tbody>
@@ -56,7 +56,7 @@
                     {% for tonar, dict_1 in dict_trip.items %}
                     {% for smena, dict_2 in dict_1.items %}
                     {% for store, trip in dict_2.items %}
-                    <tr scope="row">
+                    <tr class="text-center" scope="row">
                         <td>{{ tonar }}</td>
                         <td>{{ smena }}</td>
                         <td>{{ store.0 }}</td>
@@ -70,7 +70,32 @@
                 </table>
             </div>
             <div class="tab-pane fade" id="reestr-tab-pane" role="tabpanel" aria-labelledby="reestr-tab" tabindex="0">
-                <p>Здесь будет таблица с кол-вом рейсов в зависимости от расстояния</p>
+                <table class="table  table-hover table-warning table-striped table-bordered">
+                    <thead>
+                    <tr class="table-dark text-center" scope="row">
+                        <td rowspan="2">Машина</td>
+                        <td colspan={{lst_distance|length}}>Количество рейсов</td>
+                        <td rowspan="2">Итого рейсов</td>
+                    </tr>
+                    <tr class="table-dark text-center" scope="row">
+                        {% for dist in lst_distance %}
+                        <td>{{ dist }}</td>
+                        {% endfor %}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for tonar, lst_dist in dict_route.items %}
+
+                    <tr class="text-center" scope="row">
+                        <td>{{ tonar }}</td>
+                        {% for count in lst_dist %}
+                        <td>{{ count }}</td>
+                        {% endfor %}
+                    </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

@@ -58,7 +58,6 @@ def totalMove():
 
             for zone in list_zone:
                 count_zone = dict_move[key_tonar][key_date].count(zone)  # кол-во ходок
-
                 sheet.cell(row=i, column=3).value = zone[0]  # зона погрузки
                 sheet.cell(row=i, column=3).border = borderCell
                 sheet.cell(row=i, column=4).value = zone[1]  # зона разгрузки
@@ -122,16 +121,20 @@ def totalReestr():
         total_route = 0
         for distCol in list_distance:
             # получить список маршрутов, соответствующих дистанции dist. Может быть несколько рейсов с равным расстоянием
+            # dict_distance=  {('ЭКГ №113', 'ДСУ №1'): 1.7}
             lst_route = []
             for route, distance in dict_distance.items():
                 if distance == distCol:
                     lst_route.append(route)
-
+            print("lst_route=", lst_route)
             # по найденным маршрутам ведем поиск по словарю dict_move
+            #dict_move=  {'Howo №100': {'01.12.2021. Смена 1': [('Склад ДСУ1,2,3', 'Ж/Д склад')}}
             tonar_values = dict_move.get(key_tonar)
             lst = list(tonar_values.values())
             # преобразуем из списка список в список 1 порядка
+            #arr_route =  [('Склад ДСУ1,2,3', 'Ж/Д склад'),.....]
             arr_route = [x for y in lst for x in y]
+            print("arr_route=", arr_route)
 
             # находим  кол-во вхождений эл-ов lst_route в arr_route
             count = 0
@@ -139,7 +142,7 @@ def totalReestr():
                 count = arr_route.count(item) + count
             sheet.cell(row=row, column=col).value = count
             sheet.cell(row=row, column=col).border = borderCell
-            dictSum[distCol] = dictSum[distCol] + count
+            dictSum[distCol] = dictSum[distCol] + count #итого внизу таблицы
             col = col + 1
             total_route = count + total_route
 
@@ -277,11 +280,11 @@ for row in range(5, MAXROW):
     # 1 ячейка
     find_str = str(sheet.cell(row=row, column=1).value)
     # ищем строку вида Тонар №2694
-    match_tonar = re.findall(r".*\s№.*", find_str)
+    match_tonar = re.findall(r"(\w+)+\s№(\w+)", find_str)
     if len(match_tonar) > 0:
-        name_tonar = match_tonar[0]
+        name_tonar = match_tonar[0][0] + " №" + match_tonar[0][1]
         # если ключа нет в словаре, то добавляем и продолжаем цикл
-        if name_tonar not in dict_move:
+        if ((name_tonar in dict_move) == False):
             dict_move[name_tonar] = dict()
             continue
     # ищем строку вида 02.10.2021. Смена 2
