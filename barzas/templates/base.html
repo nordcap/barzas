@@ -10,14 +10,19 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-dark bg-primary">
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
         <a href="{% url 'transport:index' %}" class="navbar-brand">Барзасский карьер</a>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="btn btn-outline-light" href="{% url 'admin:index'%}">Админка</a>
+        <ul class="navbar-nav me-auto">
+            <li class="nav-link">
+                <a class="btn btn-outline-light" href="{% url 'transport:index'%}">Транспорт</a>
+            </li>
+            <li class="nav-link">
+                <a class="btn btn-outline-light" href="{% url 'staff:index'%}">Кадры</a>
             </li>
         </ul>
+        <a class="btn btn-outline-light" href="{% url 'admin:index'%}">Админка</a>
+
     </div>
 </nav>
 
