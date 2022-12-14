@@ -2,7 +2,7 @@
 {% load static %}
 {% block content%}
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
         <div class="card">
             <img src="{% static 'img/tonar.jpg'%}" class="card-img-top" alt="tonar">
             <div class="card-body">
@@ -41,11 +41,9 @@
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="trip-tab-pane" role="tabpanel" aria-labelledby="trip-tab"
                  tabindex="0">
-                <table class="table  table-hover table-primary table-striped table-bordered">
+                <table class="table table-default table-bordered border-dark">
                     <thead>
                     <tr class="table-dark text-center">
-                        <td scope="col">Машина</td>
-                        <td scope="col">Смена</td>
                         <td scope="col">Погрузка</td>
                         <td scope="col">Разгрузка</td>
                         <td scope="col">Ходки</td>
@@ -54,14 +52,18 @@
                     <tbody>
 
                     {% for tonar, dict_1 in dict_trip.items %}
+                    <tr class="text-center table-warning text-danger border-dark border-2" scope="row">
+                        <td colspan="3"><h4>{{ tonar }}</h4></td>
+                    </tr>
                     {% for smena, dict_2 in dict_1.items %}
+                    <tr class="text-center text-primary" scope="row">
+                        <td colspan="3"><h5>{{ smena }}</h5></td>
+                    </tr>
                     {% for store, trip in dict_2.items %}
-                    <tr class="text-center" scope="row">
-                        <td>{{ tonar }}</td>
-                        <td>{{ smena }}</td>
-                        <td>{{ store.0 }}</td>
-                        <td>{{ store.1 }}</td>
-                        <td>{{ trip }}</td>
+                    <tr scope="row">
+                        <td class="text-end">{{ store.0 }}</td>
+                        <td class="text-center">{{ store.1 }}</td>
+                        <td class="text-center">{{ trip }}</td>
                     </tr>
                     {% endfor %}
                     {% endfor %}
@@ -70,7 +72,7 @@
                 </table>
             </div>
             <div class="tab-pane fade" id="reestr-tab-pane" role="tabpanel" aria-labelledby="reestr-tab" tabindex="0">
-                <table class="table  table-hover table-warning table-striped table-bordered">
+                <table class="table table-warning table-striped table-bordered border-dark">
                     <thead>
                     <tr class="table-dark text-center" scope="row">
                         <td rowspan="2">Машина</td>

@@ -47,9 +47,9 @@ def calc_trip_adv(dict_move):
         dict_auto[key_tonar] = dict()
         for key_date in dict_move[key_tonar]:
             list_zone = list(set(dict_move[key_tonar][key_date]))
-            list_zone.sort()
+            sort_list_zone = sorted(list_zone, key=lambda x: x[1])  # сортировка по пункту разгрузки
             dict_auto[key_tonar][key_date] = dict()
-            for zone in list_zone:
+            for zone in sort_list_zone:
                 count_zone = dict_move[key_tonar][key_date].count(zone)  # кол-во ходок
                 dict_auto[key_tonar][key_date][zone] = count_zone
     return dict_auto
